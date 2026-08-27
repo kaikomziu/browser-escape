@@ -206,6 +206,7 @@ h1.glitch{
 
 /* ===== MENU MODAL ===== */
 .modal{position:fixed;inset:0;z-index:100;display:flex;background:rgba(4,7,12,.72);backdrop-filter:blur(3px)}
+.modal[hidden]{display:none}
 .modal-card{
   margin:auto;width:min(420px,92vw);background:var(--panel);border:1px solid var(--line);
   border-radius:16px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.5);

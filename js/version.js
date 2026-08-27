@@ -1,6 +1,13 @@
 /* ===== ブラウザ脱出 — 更新履歴 ===== */
-window.GAME_VERSION = "1.0.0";
+window.GAME_VERSION = "1.0.1";
 window.CHANGELOG = [
+  {
+    v: "1.0.1",
+    date: "2026-08-28",
+    notes: [
+      "メニューが常に開いたまま閉じられない不具合を修正（.modal[hidden] のCSS漏れ）",
+    ],
+  },
   {
     v: "1.0.0",
     date: "2026-08-28",
