@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ブラウザ脱出 - ESCAPE THE BROWSER</title>
+<meta name="description" content="ブラウザの機能そのものを使って8つの部屋から脱出するネタ系脱出ゲーム。タブ切り替え・リサイズ・ダークモード・印刷プレビュー・URLバー・ズーム・オフライン・戻るボタン。">
+<link id="favicon" rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0e14'/%3E%3Crect x='1' y='1' width='14' height='4' fill='%232b3446'/%3E%3Ccircle cx='3' cy='3' r='1.1' fill='%23ff5f56'/%3E%3Ctext x='8' y='14' font-size='9' text-anchor='middle' fill='%235ef2b8'%3E%3F%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- TITLE -->
+  <section id="screen-title" class="screen active">
+    <div class="title-wrap">
+      <div class="title-badge">NETA-GAME</div>
+      <h1 class="glitch" data-text="ESCAPE THE BROWSER">ESCAPE THE BROWSER</h1>
+      <p class="subtitle">ブラウザ脱出</p>
+      <p class="lede">
+        うっかり、あなたは<b>自分自身をブラウザの中に閉じ込めて</b>しまった。<br>
+        8つの部屋。出口の鍵は、いつも使っている<b>ブラウザの機能</b>そのもの。
+      </p>
+      <div class="title-btns">
+        <button id="btn-start" class="btn btn-primary">脱出をはじめる</button>
+        <button id="btn-continue" class="btn" hidden>つづきから</button>
+      </div>
+      <p class="hint-line">PC推奨 / スマホでも各部屋に代替手段あり</p>
+      <p class="best-line" id="title-best" hidden></p>
+    </div>
+    <div class="scanlines" aria-hidden="true"></div>
+  </section>
+
+  <!-- GAME -->
+  <section id="screen-game" class="screen">
+    <header class="hud">
+      <button id="btn-menu" class="hud-btn" title="メニュー">☰</button>
+      <div class="hud-rooms" id="hud-rooms"></div>
+      <div class="hud-timer" id="hud-timer">00:00</div>
+    </header>
+
+    <main id="room" class="room">
+      <div class="room-inner">
+        <div class="room-tag" id="room-tag">ROOM 1</div>
+        <h2 class="room-title" id="room-title"></h2>
+        <p class="room-flavor" id="room-flavor"></p>
+        <div class="room-stage" id="room-stage"></div>
+        <div class="room-feedback" id="room-feedback" aria-live="polite"></div>
+      </div>
+    </main>
+
+    <footer class="room-foot">
+      <button id="btn-hint" class="btn btn-ghost">ヒント</button>
+      <div class="hint-box" id="hint-box" hidden></div>
+    </footer>
+    <div class="scanlines" aria-hidden="true"></div>
+  </section>
+
+  <!-- CLEAR -->
+  <section id="screen-clear" class="screen">
+    <div class="clear-wrap">
+      <div class="title-badge">ESCAPED</div>
+      <h1 class="glitch" data-text="脱出成功">脱出成功</h1>
+      <p class="clear-time" id="clear-time"></p>
+      <p class="clear-rank" id="clear-rank"></p>
+      <p class="clear-best" id="clear-best"></p>
+      <div class="title-btns">
+        <button id="btn-replay" class="btn btn-primary">もう一度</button>
+        <button id="btn-share" class="btn">結果をコピー</button>
+      </div>
+      <p class="credit">ブラウザ脱出 — ESCAPE THE BROWSER</p>
+    </div>
+    <div class="scanlines" aria-hidden="true"></div>
+  </section>
+
+</div>
+
+<!-- MENU MODAL -->
+<div id="modal" class="modal" hidden>
+  <div class="modal-card">
+    <h3>メニュー</h3>
+    <ul class="modal-menu">
+      <li><button data-act="resume">ゲームに戻る</button></li>
+      <li><button data-act="skip">この部屋をあきらめる（+2:00）</button></li>
+      <li><button data-act="restart">最初からやり直す</button></li>
+      <li><button data-act="title">タイトルへ</button></li>
+    </ul>
+    <div class="modal-changelog" id="modal-changelog"></div>
+  </div>
+</div>
+
+<!-- print-only clue (Room 4) -->
+<div id="print-map" aria-hidden="true">
+  <div class="pm-title">― 脱出経路図 ―</div>
+  <div class="pm-seq" id="pm-seq"></div>
+  <div class="pm-note">この地図は印刷にのみ現れる</div>
+</div>
+
+<script src="js/version.js"></script>
+<script src="js/rooms.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
